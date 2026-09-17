@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>PastPredictor</title>
+</head>
+
+<body>
+
+    <label>choose an option</label>
+    <input type="radio" name="choice" value="Red Pill">Red Pill
+    <input type="radio" name="choice" value="Blue pill">Blue pill
+    <button>submit</button>
+
+    <div id="loading" style="display: none;">
+        <br>
+        <img src="https://media.tenor.com/5vo_w_jDfwgAAAAM/calculation-math.gif" alt="Calculating...">
+        <p>Calculating...</p>
+    </div>
+
+    <p> Prediction :</p>
+    <p id="prediction"></p>
+
+    <script>
+        const button = document.querySelector('button');
+        const loading = document.getElementById('loading');
+        const prediction = document.getElementById('prediction');
+
+        button.addEventListener('click', () => {
+            const selected = document.querySelector('input[name="choice"]:checked');
+            if (!selected) {
+                alert('Please choose an option first!');
+                return;
+            }
+
+            const choice = selected.value;
+            prediction.textContent = '';
+            loading.style.display = 'block';
+
+            setTimeout(() => {
+                loading.style.display = 'none';
+                prediction.textContent = choice;
+            }, 5000);
+        });
+    </script>
+
+</body>
+
+</html>
